@@ -1,11 +1,13 @@
 package com.example.walter.workoutapp;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ArrayAdapter;
 
@@ -13,6 +15,12 @@ import android.widget.ArrayAdapter;
  * A simple {@link } subclass.
  */
 public class WorkoutListFragment extends ListFragment {
+
+    static interface WorkoutListListener{
+        void itemClicked(long id);
+    };
+
+    private WorkoutListListener listener;
 
 
     public WorkoutListFragment() {
@@ -32,6 +40,19 @@ public class WorkoutListFragment extends ListFragment {
         setListAdapter(adapter);
         return super.onCreateView(inflater, container, savedInstanceState);
 
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.listener = (WorkoutListListener)activity;
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id){
+        if(listener != null) {
+            listener.itemClicked(id);
+        }
     }
 
 }
