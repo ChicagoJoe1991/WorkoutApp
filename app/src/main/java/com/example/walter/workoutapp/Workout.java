@@ -11,13 +11,13 @@ public class Workout {
     //workouts is an array of four workouts
     public static final Workout[] workouts = {
             new Workout("The Limb Loosener",
-                    "5 Handstand push-ups/n10 1-legged squats/n15 Pull-ups"),
+                    "5 Handstand push-ups\n10 1-legged squats\n15 Pull-ups"),
             new Workout("Core Agony",
-                    "100 Pull-ups/n100 Push-ups/n100 Sit-ups/n100 Squats"),
+                    "100 Pull-ups\n100 Push-ups\n100 Sit-ups\n100 Squats"),
             new Workout("The Wimp Special",
-                    "5 Pull-ups/n10 Push-ups/n15 Squats"),
+                    "5 Pull-ups\n10 Push-ups\n15 Squats"),
             new Workout("Strength and Length",
-                    "500 meter run/n21 x 1.p pound kettleball swing/n21 x pull-ups")
+                    "500 meter run\n21 x 1.p pound kettleball swing\n21 x pull-ups")
     };
 
     //each workout has a name and a description
