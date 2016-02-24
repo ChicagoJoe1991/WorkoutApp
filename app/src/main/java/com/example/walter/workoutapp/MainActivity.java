@@ -29,7 +29,7 @@ public class MainActivity extends Activity implements WorkoutListFragment.Workou
         if(fragmentContainer != null) {
             WorkoutDetailFragment details = new WorkoutDetailFragment();
             FragmentTransaction ft = getFragmentManager().beginTransaction();
-            details.setWorkoutId(id);
+            details.setWorkout(id);
             ft.replace(R.id.fragment_container, details);
             ft.addToBackStack(null);
             ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
