@@ -22,12 +22,6 @@ public class WorkoutListFragment extends ListFragment {
 
     private WorkoutListListener listener;
 
-
-    public WorkoutListFragment() {
-        // Required empty public constructor
-    }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

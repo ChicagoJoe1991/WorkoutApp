@@ -102,7 +102,7 @@ public class StopwatchFragment extends Fragment implements View.OnClickListener 
                 int hours = seconds/3600;
                 int minutes = seconds/60;
                 int secs = seconds % 60;
-                String time = String.format("%d:%02:%02", hours, minutes, secs);
+                String time = String.format("%d:%02d:%02d", hours, minutes, secs);
                 //display the number of seconds that have passed in the stopwatch
                 timeView.setText(time);
                 //if the stopwatch is running, increment the number of seconds
