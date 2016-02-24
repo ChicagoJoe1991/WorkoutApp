@@ -23,13 +23,15 @@ public class WorkoutDetailFragment extends Fragment {
         if(savedInstanceState != null){
             workoutId = savedInstanceState.getLong("workoutId");
         }
-        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
-        StopwatchFragment stopwatchFragment = new StopwatchFragment();
-        //replace the fragment in the layout
-        ft.replace(R.id.stopwatch_container, stopwatchFragment);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
+        else {
+            FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+            StopwatchFragment stopwatchFragment = new StopwatchFragment();
+            //replace the fragment in the layout
+            ft.replace(R.id.stopwatch_container, stopwatchFragment);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
+        }
         // Inflate the layout for this fragment; the equivalent of the setContentView for activity
         return inflater.inflate(R.layout.fragment_workout_detail, container, false);
     }
