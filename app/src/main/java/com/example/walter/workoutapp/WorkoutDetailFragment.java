@@ -1,6 +1,7 @@
 package com.example.walter.workoutapp;
 
 
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -30,6 +31,8 @@ public class WorkoutDetailFragment extends Fragment {
     //onCreateView() method is called when android needs the fragments layout
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+       
+
         // Inflate the layout for this fragment; the equivalent of the setContentView for activity
         return inflater.inflate(R.layout.fragment_workout_detail, container, false);
     }
@@ -48,6 +51,13 @@ public class WorkoutDetailFragment extends Fragment {
             TextView description = (TextView) view.findViewById(R.id.textDescription);
             description.setText(workout.getDescription());
         }
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putLong("workoutId", workoutId);
+    }
+    public void setWorkout(long id){
+        this.workoutId = id;
     }
 
 }
