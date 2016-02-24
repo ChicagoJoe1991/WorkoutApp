@@ -1,6 +1,7 @@
 package com.example.walter.workoutapp;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,8 @@ import android.view.MenuItem;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 
+import com.example.walter.DetailActivity;
+
 public class MainActivity extends Activity implements WorkoutListFragment.WorkoutListListener {
 
     @Override
@@ -22,12 +25,20 @@ public class MainActivity extends Activity implements WorkoutListFragment.Workou
 
     @Override
     public void itemClicked(long id){
-        WorkoutDetailFragment details = new WorkoutDetailFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        details.setWorkoutId(id);
-        ft.replace(R.id.fragment_container, details);
-        ft.addToBackStack(null);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-        ft.commit();
+        View fragmentContainer = findViewById(R.id.fragment_container);
+        if(fragmentContainer != null) {
+            WorkoutDetailFragment details = new WorkoutDetailFragment();
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            details.setWorkoutId(id);
+            ft.replace(R.id.fragment_container, details);
+            ft.addToBackStack(null);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            ft.commit();
+        } else {
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            intent.putExtra(DetailActivity.EXTRA_WORKOUT_ID, (int)id);
+            startActivity(intent);
+        }
+
     }
 }
