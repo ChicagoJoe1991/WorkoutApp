@@ -14,25 +14,22 @@ import android.widget.TextView;
  * A simple {@link Fragment} subclass.
  */
 public class WorkoutDetailFragment extends Fragment {
-
-
     private long workoutId;
-
-    public void setWorkoutId(long id) {
-        this.workoutId = id;
-    }
-
-    public WorkoutDetailFragment() {
-        // Required empty public constructor
-    }
-
 
     @Override
     //onCreateView() method is called when android needs the fragments layout
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
+        if(savedInstanceState != null){
+            workoutId = savedInstanceState.getLong("workoutId");
+        }
+        FragmentTransaction ft = getChildFragmentManager().beginTransaction();
+        StopwatchFragment stopwatchFragment = new StopwatchFragment();
+        //replace the fragment in the layout
+        ft.replace(R.id.stopwatch_container, stopwatchFragment);
+        ft.addToBackStack(null);
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ft.commit();
         // Inflate the layout for this fragment; the equivalent of the setContentView for activity
         return inflater.inflate(R.layout.fragment_workout_detail, container, false);
     }
